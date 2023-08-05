@@ -1,6 +1,8 @@
+# trilium-client
+
 This is an auto-generated client for [Trilium Notes](https://github.com/zadam/trilium). It builds an API client using the `etapi.openapi.yaml` provided by Trilium.
 
-It's a simple Poetry project with a build script to invoke the [OpenAPI Generator](https://openapi-generator.tech) and extract dependencies. The generated `trilium_client`, `docs`, and `README.md` artifacts are packaged and many unused files are ignored.
+The generated `trilium_client`, `docs`, and `README.md` artifacts are packaged and many unused files are ignored.
 
 To install, run:
 
@@ -49,9 +51,9 @@ Python 3.7+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/mm21/trilium-client.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/mm21/trilium-client.git`)
 
 Then import the package:
 ```python

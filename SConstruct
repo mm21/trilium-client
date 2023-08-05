@@ -4,6 +4,8 @@ import shutil
 
 PROJECT = "trilium-client"
 PACKAGE = "trilium_client"
+GIT_USER_ID = "mm21"
+GIT_REPO_ID = PROJECT
 BUILD_DIR = f"build/{PROJECT}"
 
 env = Environment()
@@ -28,7 +30,7 @@ def get_dependencies(path_requirements: str) -> list[tuple[str, str]]:
             ver = "".join(req_split[1:])
 
             # skip setuptools - we'll use poetry's packaging
-            if name == 'setuptools':
+            if name == "setuptools":
                 continue
 
             deps.append((name, ver))
@@ -38,9 +40,7 @@ def get_dependencies(path_requirements: str) -> list[tuple[str, str]]:
 
 # adjust dependencies in place
 def tune_dependencies(deps: list[str]):
-
     for i, (name, ver) in enumerate(deps):
-
         # pin pydantic version to avoid deprecation warnings
         if name == "pydantic":
             deps[i] = (name, f"{ver} <2")
@@ -99,6 +99,11 @@ def build_readme(target, source, env):
     # read generated readme
     with open(client_readme) as fh:
         client_readme_text = fh.read()
+
+    # substitute strings
+    client_readme_text = client_readme_text.replace(
+        "GIT_USER_ID", GIT_USER_ID
+    ).replace("GIT_REPO_ID", GIT_REPO_ID)
 
     readme_text = f"{base_readme_text}\n{client_readme_text}"
 
