@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **password** | **str** | user&#39;s password used to e.g. login to Trilium server and/or protect notes | [optional] 
@@ -16,12 +17,12 @@ json = "{}"
 # create an instance of LoginRequest from a JSON string
 login_request_instance = LoginRequest.from_json(json)
 # print the JSON string representation of the object
-print LoginRequest.to_json()
+print(LoginRequest.to_json())
 
 # convert the object into a dict
 login_request_dict = login_request_instance.to_dict()
 # create an instance of LoginRequest from a dict
-login_request_form_dict = login_request.from_dict(login_request_dict)
+login_request_from_dict = LoginRequest.from_dict(login_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

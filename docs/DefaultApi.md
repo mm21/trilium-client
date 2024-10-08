@@ -44,56 +44,13 @@ Create a database backup under a given name
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    backup_name = 'backup_name_example' # str | If the backupName is e.g. \"now\", then the backup will be written to \"backup-now.db\" file
-
-    try:
-        api_instance.create_backup(backup_name)
-    except Exception as e:
-        print("Exception when calling DefaultApi->create_backup: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -128,8 +85,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->create_backup: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -149,6 +109,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | backup has been created |  -  |
@@ -166,58 +127,15 @@ Create a note and place it into the note tree
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    create_note_def = trilium_client.CreateNoteDef() # CreateNoteDef | 
-
-    try:
-        api_response = api_instance.create_note(create_note_def)
-        print("The response of DefaultApi->create_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->create_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.create_note_def import CreateNoteDef
+from trilium_client.models.note_with_branch import NoteWithBranch
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -254,8 +172,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->create_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -275,6 +196,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | note created |  -  |
@@ -292,57 +214,13 @@ Create a note revision for the given note
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-    format = 'html' # str |  (optional) (default to 'html')
-
-    try:
-        api_instance.create_revision(note_id, format=format)
-    except Exception as e:
-        print("Exception when calling DefaultApi->create_revision: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -371,20 +249,23 @@ with trilium_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trilium_client.DefaultApi(api_client)
     note_id = 'note_id_example' # str | 
-    format = 'html' # str |  (optional) (default to 'html')
+    format = html # str |  (optional) (default to html)
 
     try:
         api_instance.create_revision(note_id, format=format)
     except Exception as e:
         print("Exception when calling DefaultApi->create_revision: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **note_id** | **str**|  | 
- **format** | **str**|  | [optional] [default to &#39;html&#39;]
+ **format** | **str**|  | [optional] [default to html]
 
 ### Return type
 
@@ -400,6 +281,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | revision has been created |  -  |
@@ -417,56 +299,13 @@ deletes a attribute based on the attributeId supplied.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    attribute_id = 'attribute_id_example' # str | 
-
-    try:
-        api_instance.delete_attribute_by_id(attribute_id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_attribute_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -501,8 +340,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->delete_attribute_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -522,6 +364,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | attribute deleted |  -  |
@@ -539,56 +382,13 @@ deletes a branch based on the branchId supplied. If this is the last branch of t
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    branch_id = 'branch_id_example' # str | 
-
-    try:
-        api_instance.delete_branch_by_id(branch_id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_branch_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -623,8 +423,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->delete_branch_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -644,6 +447,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | branch deleted |  -  |
@@ -661,56 +465,13 @@ deletes a single note based on the noteId supplied
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-
-    try:
-        api_instance.delete_note_by_id(note_id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_note_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -745,8 +506,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->delete_note_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -766,6 +530,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | note deleted |  -  |
@@ -774,7 +539,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **export_note_subtree**
-> str export_note_subtree(note_id, format=format)
+> bytearray export_note_subtree(note_id, format=format)
 
 
 
@@ -783,59 +548,13 @@ Exports ZIP file export of a given note subtree. To export whole document, use \
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-    format = 'html' # str |  (optional) (default to 'html')
-
-    try:
-        api_response = api_instance.export_note_subtree(note_id, format=format)
-        print("The response of DefaultApi->export_note_subtree:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->export_note_subtree: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -864,7 +583,7 @@ with trilium_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trilium_client.DefaultApi(api_client)
     note_id = 'note_id_example' # str | 
-    format = 'html' # str |  (optional) (default to 'html')
+    format = html # str |  (optional) (default to html)
 
     try:
         api_response = api_instance.export_note_subtree(note_id, format=format)
@@ -873,17 +592,20 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->export_note_subtree: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **note_id** | **str**|  | 
- **format** | **str**|  | [optional] [default to &#39;html&#39;]
+ **format** | **str**|  | [optional] [default to html]
 
 ### Return type
 
-**str**
+**bytearray**
 
 ### Authorization
 
@@ -895,6 +617,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/zip, application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | export ZIP file |  -  |
@@ -912,57 +635,14 @@ returns information about the running Trilium instance
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-
-    try:
-        api_response = api_instance.get_app_info()
-        print("The response of DefaultApi->get_app_info:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_app_info: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.app_info import AppInfo
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -998,8 +678,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_app_info: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1016,6 +699,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | app info |  -  |
@@ -1033,58 +717,14 @@ Returns an attribute identified by its ID
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    attribute_id = 'attribute_id_example' # str | 
-
-    try:
-        api_response = api_instance.get_attribute_by_id(attribute_id)
-        print("The response of DefaultApi->get_attribute_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_attribute_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.attribute import Attribute
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1121,8 +761,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_attribute_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1142,6 +785,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | attribute response |  -  |
@@ -1159,58 +803,14 @@ Returns a branch identified by its ID
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    branch_id = 'branch_id_example' # str | 
-
-    try:
-        api_response = api_instance.get_branch_by_id(branch_id)
-        print("The response of DefaultApi->get_branch_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_branch_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.branch import Branch
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1247,8 +847,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_branch_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1268,6 +871,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | branch response |  -  |
@@ -1285,58 +889,14 @@ returns a day note for a given date. Gets created if doesn't exist.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    var_date = '2022-02-22' # date | 
-
-    try:
-        api_response = api_instance.get_day_note(var_date)
-        print("The response of DefaultApi->get_day_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_day_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1373,8 +933,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_day_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1394,6 +957,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | day note |  -  |
@@ -1411,58 +975,14 @@ returns an \"inbox\" note, into which note can be created. Date will be used dep
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    var_date = '2022-02-22' # date | 
-
-    try:
-        api_response = api_instance.get_inbox_note(var_date)
-        print("The response of DefaultApi->get_inbox_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_inbox_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1499,8 +1019,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_inbox_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1520,6 +1043,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | inbox note |  -  |
@@ -1537,58 +1061,14 @@ returns a week note for a given date. Gets created if doesn't exist.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    month = '2022-02' # str | 
-
-    try:
-        api_response = api_instance.get_month_note(month)
-        print("The response of DefaultApi->get_month_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_month_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1625,8 +1105,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_month_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1646,6 +1129,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | month note |  -  |
@@ -1663,58 +1147,14 @@ Returns a note identified by its ID
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-
-    try:
-        api_response = api_instance.get_note_by_id(note_id)
-        print("The response of DefaultApi->get_note_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_note_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1751,8 +1191,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_note_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1772,6 +1215,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | note response |  -  |
@@ -1789,58 +1233,13 @@ Returns note content identified by its ID
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-
-    try:
-        api_response = api_instance.get_note_content(note_id)
-        print("The response of DefaultApi->get_note_content:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_note_content: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -1877,8 +1276,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_note_content: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1898,6 +1300,7 @@ Name | Type | Description  | Notes
  - **Accept**: text/html
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | note content response |  -  |
@@ -1914,58 +1317,14 @@ returns a week note for a given date. Gets created if doesn't exist.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    var_date = '2022-02-22' # date | 
-
-    try:
-        api_response = api_instance.get_week_note(var_date)
-        print("The response of DefaultApi->get_week_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_week_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2002,8 +1361,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_week_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2023,6 +1385,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | week note |  -  |
@@ -2040,58 +1403,14 @@ returns a week note for a given date. Gets created if doesn't exist.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    year = '2022-02' # str | 
-
-    try:
-        api_response = api_instance.get_year_note(year)
-        print("The response of DefaultApi->get_year_note:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_year_note: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2128,8 +1447,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_year_note: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2149,6 +1471,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | year note |  -  |
@@ -2166,58 +1489,14 @@ Imports ZIP file into a given note.
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-
-    try:
-        api_response = api_instance.import_zip(note_id)
-        print("The response of DefaultApi->import_zip:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->import_zip: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note_with_branch import NoteWithBranch
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2254,8 +1533,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->import_zip: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2275,6 +1557,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | note created |  -  |
@@ -2291,13 +1574,14 @@ get an ETAPI token based on password for further use with ETAPI
 
 ### Example
 
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.login201_response import Login201Response
+from trilium_client.models.login_request import LoginRequest
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2319,7 +1603,10 @@ with trilium_client.ApiClient(configuration) as api_client:
         print("Exception when calling DefaultApi->login: %s\n" % e)
 ```
 
+
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2339,6 +1626,7 @@ No authorization required
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | auth token |  -  |
@@ -2357,55 +1645,13 @@ logout (delete/deactivate) an ETAPI token
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-
-    try:
-        api_instance.logout()
-    except Exception as e:
-        print("Exception when calling DefaultApi->logout: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2439,8 +1685,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->logout: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2457,6 +1706,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | logout successful |  -  |
@@ -2474,59 +1724,14 @@ patch a attribute identified by the attributeId with changes in the body. For la
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    attribute_id = 'attribute_id_example' # str | 
-    attribute = trilium_client.Attribute() # Attribute | 
-
-    try:
-        api_response = api_instance.patch_attribute_by_id(attribute_id, attribute)
-        print("The response of DefaultApi->patch_attribute_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->patch_attribute_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.attribute import Attribute
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2564,8 +1769,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->patch_attribute_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2586,6 +1794,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | attribute updated |  -  |
@@ -2603,59 +1812,14 @@ patch a branch identified by the branchId with changes in the body. Only prefix 
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    branch_id = 'branch_id_example' # str | 
-    branch = trilium_client.Branch() # Branch | 
-
-    try:
-        api_response = api_instance.patch_branch_by_id(branch_id, branch)
-        print("The response of DefaultApi->patch_branch_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->patch_branch_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.branch import Branch
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2693,8 +1857,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->patch_branch_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2715,6 +1882,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | branch updated |  -  |
@@ -2732,59 +1900,14 @@ patch a note identified by the noteId with changes in the body
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-    note = trilium_client.Note() # Note | 
-
-    try:
-        api_response = api_instance.patch_note_by_id(note_id, note)
-        print("The response of DefaultApi->patch_note_by_id:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->patch_note_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.note import Note
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2822,8 +1945,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->patch_note_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2844,6 +1970,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | note updated |  -  |
@@ -2861,58 +1988,14 @@ create an attribute for a given note
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    attribute = trilium_client.Attribute() # Attribute | 
-
-    try:
-        api_response = api_instance.post_attribute(attribute)
-        print("The response of DefaultApi->post_attribute:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->post_attribute: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.attribute import Attribute
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -2949,8 +2032,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->post_attribute: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2970,6 +2056,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | attribute created |  -  |
@@ -2987,58 +2074,14 @@ Create a branch (clone a note to a different location in the tree). In case ther
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    branch = trilium_client.Branch() # Branch | 
-
-    try:
-        api_response = api_instance.post_branch(branch)
-        print("The response of DefaultApi->post_branch:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->post_branch: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.branch import Branch
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -3075,8 +2118,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->post_branch: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3096,6 +2142,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | branch updated (branch between parent note and child note already existed) |  -  |
@@ -3114,56 +2161,13 @@ notePositions in branches are not automatically pushed to connected clients and 
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    parent_note_id = 'parent_note_id_example' # str | 
-
-    try:
-        api_instance.post_refresh_note_ordering(parent_note_id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->post_refresh_note_ordering: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -3198,8 +2202,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->post_refresh_note_ordering: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3219,6 +2226,7 @@ void (empty response body)
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | note ordering will be asynchronously updated in all connected clients |  -  |
@@ -3236,57 +2244,13 @@ Updates note content identified by its ID
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    note_id = 'note_id_example' # str | 
-    body = 'body_example' # str | html content of note
-
-    try:
-        api_instance.put_note_content_by_id(note_id, body)
-    except Exception as e:
-        print("Exception when calling DefaultApi->put_note_content_by_id: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -3322,8 +2286,11 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->put_note_content_by_id: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3344,6 +2311,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | note content updated |  -  |
@@ -3360,66 +2328,14 @@ Search notes
 ### Example
 
 * Api Key Authentication (EtapiTokenAuth):
-```python
-from __future__ import print_function
-import time
-import os
-import trilium_client
-from trilium_client.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to http://localhost:37740/etapi
-# See configuration.py for a list of all supported configuration parameters.
-configuration = trilium_client.Configuration(
-    host = "http://localhost:37740/etapi"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: EtapiTokenAuth
-configuration.api_key['EtapiTokenAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['EtapiTokenAuth'] = 'Bearer'
-
-# Configure HTTP basic authorization: EtapiBasicAuth
-configuration = trilium_client.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
-)
-
-# Enter a context with an instance of the API client
-with trilium_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
-    search = 'towers tolkien' # str | search query string as described in https://github.com/zadam/trilium/wiki/Search
-    fast_search = 'false' # str | enable fast search (fulltext doesn't look into content) (optional) (default to 'false')
-    include_archived_notes = 'false' # str | search by default ignores archived notes. Set to 'true' to includes archived notes into search results. (optional) (default to 'false')
-    ancestor_note_id = 'ancestor_note_id_example' # str | search only in a subtree identified by the subtree noteId. By default whole tree is searched. (optional)
-    ancestor_depth = 'eq1' # str | define how deep in the tree should the notes be searched (optional)
-    order_by = '[\"title\",\"#publicationDate\",\"isProtected\",\"isArchived\",\"dateCreated\",\"dateModified\",\"utcDateCreated\",\"utcDateModified\",\"parentCount\",\"childrenCount\",\"attributeCount\",\"labelCount\",\"ownedLabelCount\",\"relationCount\",\"ownedRelationCount\",\"relationCountIncludingLinks\",\"ownedRelationCountIncludingLinks\",\"targetRelationCount\",\"targetRelationCountIncludingLinks\",\"contentSize\",\"noteSize\",\"revisionCount\"]' # str | name of the property/label to order search results by (optional)
-    order_direction = 'asc' # str | order direction, ascending or descending (optional) (default to 'asc')
-    limit = 10 # int | limit the number of results you want to receive (optional)
-    debug = 'false' # str | set to true to get debug information in the response (search query parsing) (optional) (default to 'false')
-
-    try:
-        api_response = api_instance.search_notes(search, fast_search=fast_search, include_archived_notes=include_archived_notes, ancestor_note_id=ancestor_note_id, ancestor_depth=ancestor_depth, order_by=order_by, order_direction=order_direction, limit=limit, debug=debug)
-        print("The response of DefaultApi->search_notes:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->search_notes: %s\n" % e)
-```
-
 * Basic Authentication (EtapiBasicAuth):
+
 ```python
-from __future__ import print_function
-import time
-import os
 import trilium_client
+from trilium_client.models.search_response import SearchResponse
 from trilium_client.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to http://localhost:37740/etapi
 # See configuration.py for a list of all supported configuration parameters.
 configuration = trilium_client.Configuration(
@@ -3448,14 +2364,14 @@ with trilium_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = trilium_client.DefaultApi(api_client)
     search = 'towers tolkien' # str | search query string as described in https://github.com/zadam/trilium/wiki/Search
-    fast_search = 'false' # str | enable fast search (fulltext doesn't look into content) (optional) (default to 'false')
-    include_archived_notes = 'false' # str | search by default ignores archived notes. Set to 'true' to includes archived notes into search results. (optional) (default to 'false')
+    fast_search = false # str | enable fast search (fulltext doesn't look into content) (optional) (default to false)
+    include_archived_notes = false # str | search by default ignores archived notes. Set to 'true' to includes archived notes into search results. (optional) (default to false)
     ancestor_note_id = 'ancestor_note_id_example' # str | search only in a subtree identified by the subtree noteId. By default whole tree is searched. (optional)
     ancestor_depth = 'eq1' # str | define how deep in the tree should the notes be searched (optional)
     order_by = '[\"title\",\"#publicationDate\",\"isProtected\",\"isArchived\",\"dateCreated\",\"dateModified\",\"utcDateCreated\",\"utcDateModified\",\"parentCount\",\"childrenCount\",\"attributeCount\",\"labelCount\",\"ownedLabelCount\",\"relationCount\",\"ownedRelationCount\",\"relationCountIncludingLinks\",\"ownedRelationCountIncludingLinks\",\"targetRelationCount\",\"targetRelationCountIncludingLinks\",\"contentSize\",\"noteSize\",\"revisionCount\"]' # str | name of the property/label to order search results by (optional)
-    order_direction = 'asc' # str | order direction, ascending or descending (optional) (default to 'asc')
+    order_direction = asc # str | order direction, ascending or descending (optional) (default to asc)
     limit = 10 # int | limit the number of results you want to receive (optional)
-    debug = 'false' # str | set to true to get debug information in the response (search query parsing) (optional) (default to 'false')
+    debug = false # str | set to true to get debug information in the response (search query parsing) (optional) (default to false)
 
     try:
         api_response = api_instance.search_notes(search, fast_search=fast_search, include_archived_notes=include_archived_notes, ancestor_note_id=ancestor_note_id, ancestor_depth=ancestor_depth, order_by=order_by, order_direction=order_direction, limit=limit, debug=debug)
@@ -3464,20 +2380,23 @@ with trilium_client.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->search_notes: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **search** | **str**| search query string as described in https://github.com/zadam/trilium/wiki/Search | 
- **fast_search** | **str**| enable fast search (fulltext doesn&#39;t look into content) | [optional] [default to &#39;false&#39;]
- **include_archived_notes** | **str**| search by default ignores archived notes. Set to &#39;true&#39; to includes archived notes into search results. | [optional] [default to &#39;false&#39;]
+ **fast_search** | **str**| enable fast search (fulltext doesn&#39;t look into content) | [optional] [default to false]
+ **include_archived_notes** | **str**| search by default ignores archived notes. Set to &#39;true&#39; to includes archived notes into search results. | [optional] [default to false]
  **ancestor_note_id** | **str**| search only in a subtree identified by the subtree noteId. By default whole tree is searched. | [optional] 
  **ancestor_depth** | **str**| define how deep in the tree should the notes be searched | [optional] 
  **order_by** | **str**| name of the property/label to order search results by | [optional] 
- **order_direction** | **str**| order direction, ascending or descending | [optional] [default to &#39;asc&#39;]
+ **order_direction** | **str**| order direction, ascending or descending | [optional] [default to asc]
  **limit** | **int**| limit the number of results you want to receive | [optional] 
- **debug** | **str**| set to true to get debug information in the response (search query parsing) | [optional] [default to &#39;false&#39;]
+ **debug** | **str**| set to true to get debug information in the response (search query parsing) | [optional] [default to false]
 
 ### Return type
 
@@ -3493,6 +2412,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json; charset=utf-8
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | search response |  -  |

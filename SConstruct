@@ -40,28 +40,28 @@ def get_dependencies(path_requirements: str) -> list[tuple[str, str]]:
 
 # adjust dependencies in place
 def tune_dependencies(deps: list[str]):
+    """
+    No longer needed as openapi-generator-cli now supports Pydantic2,
+    but kept in case a similar hack is needed.
+    """
     for i, (name, ver) in enumerate(deps):
+        pass
         # pin pydantic version to avoid deprecation warnings
-        if name == "pydantic":
-            deps[i] = (name, f"{ver} <2")
+        # if name == "pydantic":
+        #    deps[i] = (name, f"{ver} <2")
 
 
 def build_client(target, source, env):
-    path_generator = shutil.which("openapi-generator-cli")
+    generator = f"docker run --rm -v {os.getcwd()}:/local openapitools/openapi-generator-cli".split()
 
-    assert (
-        path_generator is not None
-    ), "openapi-generator-cli not found, install it from: openapi-generator.tech"
-
-    args = [
-        path_generator,
+    args = generator + [
         "generate",
         "-o",
-        str(target[0]),
+        f"/local/{str(target[0])}",
         "-i",
-        str(source[0]),
+        "/local/etapi.openapi.yaml",
         "-g",
-        "python-nextgen",
+        "python",
         "--additional-properties",
         f"projectName={PROJECT}",
         "--additional-properties",
