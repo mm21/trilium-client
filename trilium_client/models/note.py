@@ -44,7 +44,9 @@ class Note(BaseModel):
     title: Optional[StrictStr] = None
     type: Optional[StrictStr] = None
     mime: Optional[StrictStr] = None
-    is_protected: Optional[StrictBool] = Field(default=None, alias="isProtected")
+    is_protected: Optional[StrictBool] = Field(
+        default=None, alias="isProtected"
+    )
     blob_id: Optional[StrictStr] = Field(
         default=None,
         description="ID of the blob object which effectively serves as a content hash",
@@ -57,12 +59,12 @@ class Note(BaseModel):
     child_note_ids: Optional[List[Annotated[str, Field(strict=True)]]] = Field(
         default=None, alias="childNoteIds"
     )
-    parent_branch_ids: Optional[List[Annotated[str, Field(strict=True)]]] = Field(
-        default=None, alias="parentBranchIds"
-    )
-    child_branch_ids: Optional[List[Annotated[str, Field(strict=True)]]] = Field(
-        default=None, alias="childBranchIds"
-    )
+    parent_branch_ids: Optional[
+        List[Annotated[str, Field(strict=True)]]
+    ] = Field(default=None, alias="parentBranchIds")
+    child_branch_ids: Optional[
+        List[Annotated[str, Field(strict=True)]]
+    ] = Field(default=None, alias="childBranchIds")
     date_created: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="dateCreated"
     )
@@ -105,36 +107,6 @@ class Note(BaseModel):
             )
         return value
 
-    @field_validator("type")
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(
-            [
-                "text",
-                "code",
-                "render",
-                "file",
-                "image",
-                "search",
-                "relationMap",
-                "book",
-                "noteMap",
-                "mermaid",
-                "webView",
-                "shortcut",
-                "doc",
-                "contentWidget",
-                "launcher",
-            ]
-        ):
-            raise ValueError(
-                "must be one of enum values ('text', 'code', 'render', 'file', 'image', 'search', 'relationMap', 'book', 'noteMap', 'mermaid', 'webView', 'shortcut', 'doc', 'contentWidget', 'launcher')"
-            )
-        return value
-
     @field_validator("date_created")
     def date_created_validate_regular_expression(cls, value):
         """Validates the regular expression"""
@@ -172,7 +144,8 @@ class Note(BaseModel):
             return value
 
         if not re.match(
-            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z",
+            value,
         ):
             raise ValueError(
                 r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
@@ -186,7 +159,8 @@ class Note(BaseModel):
             return value
 
         if not re.match(
-            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z",
+            value,
         ):
             raise ValueError(
                 r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"

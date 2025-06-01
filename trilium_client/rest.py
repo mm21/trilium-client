@@ -132,7 +132,15 @@ class RESTClientObject:
                                  (connection, read) timeouts.
         """
         method = method.upper()
-        assert method in ["GET", "HEAD", "DELETE", "POST", "PUT", "PATCH", "OPTIONS"]
+        assert method in [
+            "GET",
+            "HEAD",
+            "DELETE",
+            "POST",
+            "PUT",
+            "PATCH",
+            "OPTIONS",
+        ]
 
         if post_params and body:
             raise ApiValueError(
@@ -146,7 +154,10 @@ class RESTClientObject:
         if _request_timeout:
             if isinstance(_request_timeout, (int, float)):
                 timeout = urllib3.Timeout(total=_request_timeout)
-            elif isinstance(_request_timeout, tuple) and len(_request_timeout) == 2:
+            elif (
+                isinstance(_request_timeout, tuple)
+                and len(_request_timeout) == 2
+            ):
                 timeout = urllib3.Timeout(
                     connect=_request_timeout[0], read=_request_timeout[1]
                 )
@@ -156,7 +167,9 @@ class RESTClientObject:
             if method in ["POST", "PUT", "PATCH", "OPTIONS", "DELETE"]:
                 # no content type provided or payload is json
                 content_type = headers.get("Content-Type")
-                if not content_type or re.search("json", content_type, re.IGNORECASE):
+                if not content_type or re.search(
+                    "json", content_type, re.IGNORECASE
+                ):
                     request_body = None
                     if body is not None:
                         request_body = json.dumps(body)

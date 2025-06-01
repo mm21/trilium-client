@@ -48,7 +48,9 @@ class Attribute(BaseModel):
     name: Optional[Annotated[str, Field(strict=True)]] = None
     value: Optional[StrictStr] = None
     position: Optional[StrictInt] = None
-    is_inheritable: Optional[StrictBool] = Field(default=None, alias="isInheritable")
+    is_inheritable: Optional[StrictBool] = Field(
+        default=None, alias="isInheritable"
+    )
     utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="utcDateModified"
     )
@@ -114,7 +116,8 @@ class Attribute(BaseModel):
             return value
 
         if not re.match(
-            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z",
+            value,
         ):
             raise ValueError(
                 r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"

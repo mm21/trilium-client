@@ -48,7 +48,9 @@ class Branch(BaseModel):
         default=None, alias="parentNoteId"
     )
     prefix: Optional[StrictStr] = None
-    note_position: Optional[StrictInt] = Field(default=None, alias="notePosition")
+    note_position: Optional[StrictInt] = Field(
+        default=None, alias="notePosition"
+    )
     is_expanded: Optional[StrictBool] = Field(default=None, alias="isExpanded")
     utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="utcDateModified"
@@ -106,7 +108,8 @@ class Branch(BaseModel):
             return value
 
         if not re.match(
-            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z",
+            value,
         ):
             raise ValueError(
                 r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"

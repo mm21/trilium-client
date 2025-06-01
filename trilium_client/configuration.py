@@ -127,10 +127,14 @@ class Configuration:
         debug: Optional[bool] = None
     ) -> None:
         """Constructor"""
-        self._base_path = "http://localhost:37740/etapi" if host is None else host
+        self._base_path = (
+            "http://localhost:37740/etapi" if host is None else host
+        )
         """Default Base url
         """
-        self.server_index = 0 if server_index is None and host is None else server_index
+        self.server_index = (
+            0 if server_index is None and host is None else server_index
+        )
         self.server_operation_index = server_operation_index or {}
         """Default server index
         """
@@ -415,9 +419,9 @@ class Configuration:
         password = ""
         if self.password is not None:
             password = self.password
-        return urllib3.util.make_headers(basic_auth=username + ":" + password).get(
-            "authorization"
-        )
+        return urllib3.util.make_headers(
+            basic_auth=username + ":" + password
+        ).get("authorization")
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.
@@ -453,7 +457,9 @@ class Configuration:
             "OS: {env}\n"
             "Python Version: {pyversion}\n"
             "Version of the API: 1.0.0\n"
-            "SDK Package Version: 1.0.0".format(env=sys.platform, pyversion=sys.version)
+            "SDK Package Version: 1.0.0".format(
+                env=sys.platform, pyversion=sys.version
+            )
         )
 
     def get_host_settings(self):
@@ -499,11 +505,16 @@ class Configuration:
         for variable_name, variable in server.get("variables", {}).items():
             used_value = variables.get(variable_name, variable["default_value"])
 
-            if "enum_values" in variable and used_value not in variable["enum_values"]:
+            if (
+                "enum_values" in variable
+                and used_value not in variable["enum_values"]
+            ):
                 raise ValueError(
                     "The variable `{0}` in the host URL has invalid value "
                     "{1}. Must be {2}.".format(
-                        variable_name, variables[variable_name], variable["enum_values"]
+                        variable_name,
+                        variables[variable_name],
+                        variable["enum_values"],
                     )
                 )
 

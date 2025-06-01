@@ -62,7 +62,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -132,7 +133,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -202,7 +204,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -271,7 +274,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -315,7 +319,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -379,7 +384,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -443,7 +449,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -512,7 +519,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -567,7 +575,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -635,7 +644,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -703,7 +713,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -776,7 +787,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -823,7 +835,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -887,7 +900,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -951,7 +965,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1020,7 +1035,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -1064,7 +1080,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1128,7 +1145,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1192,7 +1210,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1261,7 +1280,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -1305,7 +1325,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1369,7 +1390,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1433,7 +1455,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1502,7 +1525,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -1547,7 +1571,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1615,7 +1640,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1683,7 +1709,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1756,7 +1783,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -1802,7 +1830,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1862,7 +1891,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1922,7 +1952,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -1987,7 +2018,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -2029,7 +2061,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2093,7 +2126,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2157,7 +2191,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2226,7 +2261,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -2270,7 +2306,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2334,7 +2371,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2398,7 +2436,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2467,7 +2506,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -2511,7 +2551,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2575,7 +2616,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2639,7 +2681,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2708,7 +2751,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -2752,7 +2796,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2816,7 +2861,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2880,7 +2926,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -2949,7 +2996,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -2993,7 +3041,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3057,7 +3106,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3121,7 +3171,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3190,7 +3241,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -3234,7 +3286,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3298,7 +3351,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3362,7 +3416,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3431,7 +3486,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -3475,7 +3531,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3539,7 +3596,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3603,7 +3661,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3672,7 +3731,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -3716,7 +3776,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3780,7 +3841,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3844,7 +3906,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -3913,7 +3976,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -3957,7 +4021,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4021,7 +4086,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4085,7 +4151,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4154,7 +4221,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -4198,7 +4266,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4262,7 +4331,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4326,7 +4396,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4395,7 +4466,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -4439,7 +4511,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4504,7 +4577,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4569,7 +4643,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4639,7 +4714,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -4692,7 +4768,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4752,7 +4829,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4812,7 +4890,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4877,7 +4956,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -4920,7 +5000,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -4988,7 +5069,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5056,7 +5138,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5129,7 +5212,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -5186,7 +5270,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5254,7 +5339,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5322,7 +5408,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5395,7 +5482,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -5452,7 +5540,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5520,7 +5609,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5588,7 +5678,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5661,7 +5752,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -5717,7 +5809,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5781,7 +5874,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5845,7 +5939,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -5914,7 +6009,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -5968,7 +6064,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6033,7 +6130,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6098,7 +6196,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6168,7 +6267,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -6222,7 +6322,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6286,7 +6387,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6350,7 +6452,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6419,7 +6522,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -6464,7 +6568,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6532,7 +6637,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6600,7 +6706,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6673,7 +6780,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -6750,7 +6858,9 @@ class DefaultApi:
         ] = None,
         order_by: Annotated[
             Optional[StrictStr],
-            Field(description="name of the property/label to order search results by"),
+            Field(
+                description="name of the property/label to order search results by"
+            ),
         ] = None,
         order_direction: Annotated[
             Optional[StrictStr],
@@ -6758,7 +6868,9 @@ class DefaultApi:
         ] = None,
         limit: Annotated[
             Optional[StrictInt],
-            Field(description="limit the number of results you want to receive"),
+            Field(
+                description="limit the number of results you want to receive"
+            ),
         ] = None,
         debug: Annotated[
             Optional[StrictStr],
@@ -6770,7 +6882,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -6885,7 +6998,9 @@ class DefaultApi:
         ] = None,
         order_by: Annotated[
             Optional[StrictStr],
-            Field(description="name of the property/label to order search results by"),
+            Field(
+                description="name of the property/label to order search results by"
+            ),
         ] = None,
         order_direction: Annotated[
             Optional[StrictStr],
@@ -6893,7 +7008,9 @@ class DefaultApi:
         ] = None,
         limit: Annotated[
             Optional[StrictInt],
-            Field(description="limit the number of results you want to receive"),
+            Field(
+                description="limit the number of results you want to receive"
+            ),
         ] = None,
         debug: Annotated[
             Optional[StrictStr],
@@ -6905,7 +7022,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -7020,7 +7138,9 @@ class DefaultApi:
         ] = None,
         order_by: Annotated[
             Optional[StrictStr],
-            Field(description="name of the property/label to order search results by"),
+            Field(
+                description="name of the property/label to order search results by"
+            ),
         ] = None,
         order_direction: Annotated[
             Optional[StrictStr],
@@ -7028,7 +7148,9 @@ class DefaultApi:
         ] = None,
         limit: Annotated[
             Optional[StrictInt],
-            Field(description="limit the number of results you want to receive"),
+            Field(
+                description="limit the number of results you want to receive"
+            ),
         ] = None,
         debug: Annotated[
             Optional[StrictStr],
@@ -7040,7 +7162,8 @@ class DefaultApi:
             None,
             Annotated[StrictFloat, Field(gt=0)],
             Tuple[
-                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)],
             ],
         ] = None,
         _request_auth: Optional[Dict[StrictStr, Any]] = None,
@@ -7141,7 +7264,8 @@ class DefaultApi:
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
         _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+            str,
+            Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]],
         ] = {}
         _body_params: Optional[bytes] = None
 
@@ -7154,7 +7278,9 @@ class DefaultApi:
             _query_params.append(("fastSearch", fast_search))
 
         if include_archived_notes is not None:
-            _query_params.append(("includeArchivedNotes", include_archived_notes))
+            _query_params.append(
+                ("includeArchivedNotes", include_archived_notes)
+            )
 
         if ancestor_note_id is not None:
             _query_params.append(("ancestorNoteId", ancestor_note_id))

@@ -38,7 +38,9 @@ class CreateNoteDef(BaseModel):
     CreateNoteDef
     """  # noqa: E501
 
-    parent_note_id: Annotated[str, Field(strict=True)] = Field(alias="parentNoteId")
+    parent_note_id: Annotated[str, Field(strict=True)] = Field(
+        alias="parentNoteId"
+    )
     title: StrictStr
     type: StrictStr
     mime: Optional[StrictStr] = Field(
@@ -85,17 +87,6 @@ class CreateNoteDef(BaseModel):
         if not re.match(r"[a-zA-Z0-9_]{4,32}", value):
             raise ValueError(
                 r"must validate the regular expression /[a-zA-Z0-9_]{4,32}/"
-            )
-        return value
-
-    @field_validator("type")
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(
-            ["text", "code", "file", "image", "search", "book", "relationMap", "render"]
-        ):
-            raise ValueError(
-                "must be one of enum values ('text', 'code', 'file', 'image', 'search', 'book', 'relationMap', 'render')"
             )
         return value
 

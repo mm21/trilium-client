@@ -75,7 +75,11 @@ class ApiClient:
     _pool = None
 
     def __init__(
-        self, configuration=None, header_name=None, header_value=None, cookie=None
+        self,
+        configuration=None,
+        header_name=None,
+        header_value=None,
+        cookie=None,
     ) -> None:
         # use default configuration if none is provided
         if configuration is None:
@@ -188,18 +192,23 @@ class ApiClient:
         # path parameters
         if path_params:
             path_params = self.sanitize_for_serialization(path_params)
-            path_params = self.parameters_to_tuples(path_params, collection_formats)
+            path_params = self.parameters_to_tuples(
+                path_params, collection_formats
+            )
             for k, v in path_params:
                 # specified safe chars, encode everything
                 resource_path = resource_path.replace(
-                    "{%s}" % k, quote(str(v), safe=config.safe_chars_for_path_param)
+                    "{%s}" % k,
+                    quote(str(v), safe=config.safe_chars_for_path_param),
                 )
 
         # post parameters
         if post_params or files:
             post_params = post_params if post_params else []
             post_params = self.sanitize_for_serialization(post_params)
-            post_params = self.parameters_to_tuples(post_params, collection_formats)
+            post_params = self.parameters_to_tuples(
+                post_params, collection_formats
+            )
             if files:
                 post_params.extend(self.files_parameters(files))
 
@@ -228,7 +237,9 @@ class ApiClient:
         # query parameters
         if query_params:
             query_params = self.sanitize_for_serialization(query_params)
-            url_query = self.parameters_to_url_query(query_params, collection_formats)
+            url_query = self.parameters_to_url_query(
+                query_params, collection_formats
+            )
             url += "?" + url_query
 
         return method, url, header_params, body, post_params
@@ -307,7 +318,9 @@ class ApiClient:
                 match = None
                 content_type = response_data.getheader("content-type")
                 if content_type is not None:
-                    match = re.search(r"charset=([a-zA-Z\-\d]+)[\s;]?", content_type)
+                    match = re.search(
+                        r"charset=([a-zA-Z\-\d]+)[\s;]?", content_type
+                    )
                 encoding = match.group(1) if match else "utf-8"
                 response_text = response_data.data.decode(encoding)
                 return_data = self.deserialize(
@@ -355,7 +368,9 @@ class ApiClient:
         elif isinstance(obj, list):
             return [self.sanitize_for_serialization(sub_obj) for sub_obj in obj]
         elif isinstance(obj, tuple):
-            return tuple(self.sanitize_for_serialization(sub_obj) for sub_obj in obj)
+            return tuple(
+                self.sanitize_for_serialization(sub_obj) for sub_obj in obj
+            )
         elif isinstance(obj, (datetime.datetime, datetime.date)):
             return obj.isoformat()
         elif isinstance(obj, decimal.Decimal):
@@ -375,11 +390,15 @@ class ApiClient:
                 obj_dict = obj.__dict__
 
         return {
-            key: self.sanitize_for_serialization(val) for key, val in obj_dict.items()
+            key: self.sanitize_for_serialization(val)
+            for key, val in obj_dict.items()
         }
 
     def deserialize(
-        self, response_text: str, response_type: str, content_type: Optional[str]
+        self,
+        response_text: str,
+        response_type: str,
+        content_type: Optional[str],
     ):
         """Deserializes response into an object.
 
@@ -410,7 +429,8 @@ class ApiClient:
             data = response_text
         else:
             raise ApiException(
-                status=0, reason="Unsupported content type: {0}".format(content_type)
+                status=0,
+                reason="Unsupported content type: {0}".format(content_type),
             )
 
         return self.__deserialize(data, response_type)
@@ -431,13 +451,17 @@ class ApiClient:
                 m = re.match(r"List\[(.*)]", klass)
                 assert m is not None, "Malformed List type definition"
                 sub_kls = m.group(1)
-                return [self.__deserialize(sub_data, sub_kls) for sub_data in data]
+                return [
+                    self.__deserialize(sub_data, sub_kls) for sub_data in data
+                ]
 
             if klass.startswith("Dict["):
                 m = re.match(r"Dict\[([^,]*), (.*)]", klass)
                 assert m is not None, "Malformed Dict type definition"
                 sub_kls = m.group(2)
-                return {k: self.__deserialize(v, sub_kls) for k, v in data.items()}
+                return {
+                    k: self.__deserialize(v, sub_kls) for k, v in data.items()
+                }
 
             # convert str to class
             if klass in self.NATIVE_TYPES_MAPPING:
@@ -484,7 +508,9 @@ class ApiClient:
                         delimiter = "|"
                     else:  # csv is the default
                         delimiter = ","
-                    new_params.append((k, delimiter.join(str(value) for value in v)))
+                    new_params.append(
+                        (k, delimiter.join(str(value) for value in v))
+                    )
             else:
                 new_params.append((k, v))
         return new_params
@@ -530,7 +556,9 @@ class ApiClient:
 
     def files_parameters(
         self,
-        files: Dict[str, Union[str, bytes, List[str], List[bytes], Tuple[str, bytes]]],
+        files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], Tuple[str, bytes]]
+        ],
     ):
         """Builds form parameters.
 
@@ -554,7 +582,9 @@ class ApiClient:
                 continue
             else:
                 raise ValueError("Unsupported file value")
-            mimetype = mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            mimetype = (
+                mimetypes.guess_type(filename)[0] or "application/octet-stream"
+            )
             params.append(tuple([k, tuple([filename, filedata, mimetype])]))
         return params
 
@@ -622,7 +652,12 @@ class ApiClient:
                 auth_setting = self.configuration.auth_settings().get(auth)
                 if auth_setting:
                     self._apply_auth_params(
-                        headers, queries, resource_path, method, body, auth_setting
+                        headers,
+                        queries,
+                        resource_path,
+                        method,
+                        body,
+                        auth_setting,
                     )
 
     def _apply_auth_params(
@@ -646,7 +681,9 @@ class ApiClient:
         elif auth_setting["in"] == "query":
             queries.append((auth_setting["key"], auth_setting["value"]))
         else:
-            raise ApiValueError("Authentication token must be in `query` or `header`")
+            raise ApiValueError(
+                "Authentication token must be in `query` or `header`"
+            )
 
     def __deserialize_file(self, response):
         """Deserializes body to file
@@ -666,8 +703,12 @@ class ApiClient:
 
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            m = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition)
-            assert m is not None, "Unexpected 'content-disposition' header value"
+            m = re.search(
+                r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition
+            )
+            assert (
+                m is not None
+            ), "Unexpected 'content-disposition' header value"
             filename = m.group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
@@ -710,7 +751,8 @@ class ApiClient:
             return string
         except ValueError:
             raise rest.ApiException(
-                status=0, reason="Failed to parse `{0}` as date object".format(string)
+                status=0,
+                reason="Failed to parse `{0}` as date object".format(string),
             )
 
     def __deserialize_datetime(self, string):
@@ -728,7 +770,9 @@ class ApiClient:
         except ValueError:
             raise rest.ApiException(
                 status=0,
-                reason=("Failed to parse `{0}` as datetime object".format(string)),
+                reason=(
+                    "Failed to parse `{0}` as datetime object".format(string)
+                ),
             )
 
     def __deserialize_enum(self, data, klass):
@@ -742,7 +786,8 @@ class ApiClient:
             return klass(data)
         except ValueError:
             raise rest.ApiException(
-                status=0, reason=("Failed to parse `{0}` as `{1}`".format(data, klass))
+                status=0,
+                reason=("Failed to parse `{0}` as `{1}`".format(data, klass)),
             )
 
     def __deserialize_model(self, data, klass):

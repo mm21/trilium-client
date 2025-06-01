@@ -770,15 +770,6 @@ components:
           type: string
         type:
           type: string
-          enum:
-            - text
-            - code
-            - file
-            - image
-            - search
-            - book
-            - relationMap
-            - render
         mime:
           type: string
           description: this needs to be specified only for note types 'code', 'file', 'image'.
@@ -815,7 +806,6 @@ components:
           type: string
         type:
           type: string
-          enum: [text, code, render, file, image, search, relationMap, book, noteMap, mermaid, webView, shortcut, doc, contentWidget, launcher]
         mime:
           type: string
         isProtected:
