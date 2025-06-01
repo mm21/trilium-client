@@ -75,10 +75,6 @@ def build_client(target, source, env):
 
     subprocess.check_call(args)
 
-    # format generated code
-    print(f"Formatting code")
-    subprocess.check_call(["black", f"{BUILD_DIR}/{PACKAGE}"])
-
     # install dependencies
     print(f"Installing dependencies")
     dependencies = get_dependencies(f"{BUILD_DIR}/requirements.txt")
@@ -116,6 +112,7 @@ def install(target, source, env):
         shutil.copyfile(str(source[0]), str(target[0]))
     else:
         shutil.copytree(str(source[0]), str(target[0]), dirs_exist_ok=True)
+        subprocess.check_call(["black", str(target[0])])
 
 
 # generate readme
