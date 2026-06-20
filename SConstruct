@@ -6,7 +6,7 @@ PROJECT = "trilium-client"
 PACKAGE = "trilium_client"
 GIT_USER_ID = "mm21"
 GIT_REPO_ID = PROJECT
-BUILD_DIR = f"build/{PROJECT}"
+BUILD_DIR = f"__build__/{PROJECT}"
 
 env = Environment()
 
@@ -108,7 +108,6 @@ def build_readme(target, source, env):
 
 
 def install(target, source, env):
-    print(f'--- copying: {source[0]} -> {target[0]}')
     if os.path.isfile(str(source[0])):
         shutil.copyfile(str(source[0]), str(target[0]))
     else:
