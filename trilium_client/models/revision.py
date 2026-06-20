@@ -34,87 +34,82 @@ from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 
-class CreateNoteDef(BaseModel):
+class Revision(BaseModel):
     """
-    CreateNoteDef
+    Revision represents a snapshot of note's title and content at some point in the past.
     """  # noqa: E501
 
-    parent_note_id: Annotated[str, Field(strict=True)] = Field(
-        alias="parentNoteId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
-    )
-    title: StrictStr
-    type: StrictStr
-    mime: Optional[StrictStr] = Field(
+    revision_id: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None,
-        description="this needs to be specified only for note types 'code', 'file', 'image'.",
-        json_schema_extra={"examples": ["application/json"]},
-    )
-    content: StrictStr
-    note_position: Optional[StrictInt] = Field(
-        default=None,
-        description="Position of the note in the parent. Normal ordering is 10, 20, 30 ... So if you want to create a note on the first position, use e.g. 5, for second position 15, for last e.g. 1000000 ",
-        alias="notePosition",
-    )
-    prefix: Optional[StrictStr] = Field(
-        default=None,
-        description="Prefix is branch (placement) specific title prefix for the note. Let's say you have your note placed into two different places in the tree, but you want to change the title a bit in one of the placements. For this you can use prefix. ",
-    )
-    is_expanded: Optional[StrictBool] = Field(
-        default=None,
-        description="true if this note (as a folder) should appear expanded",
-        alias="isExpanded",
+        alias="revisionId",
+        json_schema_extra={"examples": ["evnnmvHTCgIn"]},
     )
     note_id: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="noteId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
     )
-    branch_id: Optional[Annotated[str, Field(strict=True)]] = Field(
-        default=None, alias="branchId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
+    type: Optional[StrictStr] = None
+    mime: Optional[StrictStr] = None
+    is_protected: Optional[StrictBool] = Field(default=None, alias="isProtected")
+    title: Optional[StrictStr] = None
+    blob_id: Optional[StrictStr] = Field(
+        default=None,
+        description="ID of the blob object which effectively serves as a content hash",
+        alias="blobId",
+    )
+    date_last_edited: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="dateLastEdited",
+        json_schema_extra={"examples": ["2021-12-31 20:18:11.930+0100"]},
     )
     date_created: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None,
         alias="dateCreated",
         json_schema_extra={"examples": ["2021-12-31 20:18:11.930+0100"]},
     )
+    utc_date_last_edited: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="utcDateLastEdited",
+        json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
+    )
     utc_date_created: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None,
         alias="utcDateCreated",
         json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
     )
+    utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="utcDateModified",
+        json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
+    )
+    content_length: Optional[StrictInt] = Field(default=None, alias="contentLength")
     __properties: ClassVar[List[str]] = [
-        "parentNoteId",
-        "title",
+        "revisionId",
+        "noteId",
         "type",
         "mime",
-        "content",
-        "notePosition",
-        "prefix",
-        "isExpanded",
-        "noteId",
-        "branchId",
+        "isProtected",
+        "title",
+        "blobId",
+        "dateLastEdited",
         "dateCreated",
+        "utcDateLastEdited",
         "utcDateCreated",
+        "utcDateModified",
+        "contentLength",
     ]
 
-    @field_validator("parent_note_id")
-    def parent_note_id_validate_regular_expression(cls, value):
+    @field_validator("revision_id")
+    def revision_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if value is None:
+            return value
+
         if not isinstance(value, str):
             value = str(value)
 
         if not re.match(r"[a-zA-Z0-9_]{4,32}", value):
             raise ValueError(
                 r"must validate the regular expression /[a-zA-Z0-9_]{4,32}/"
-            )
-        return value
-
-    @field_validator("type")
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(
-            ["text", "code", "file", "image", "search", "book", "relationMap", "render"]
-        ):
-            raise ValueError(
-                "must be one of enum values ('text', 'code', 'file', 'image', 'search', 'book', 'relationMap', 'render')"
             )
         return value
 
@@ -133,8 +128,38 @@ class CreateNoteDef(BaseModel):
             )
         return value
 
-    @field_validator("branch_id")
-    def branch_id_validate_regular_expression(cls, value):
+    @field_validator("type")
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(
+            [
+                "text",
+                "code",
+                "render",
+                "file",
+                "image",
+                "search",
+                "relationMap",
+                "book",
+                "noteMap",
+                "mermaid",
+                "webView",
+                "shortcut",
+                "doc",
+                "contentWidget",
+                "launcher",
+            ]
+        ):
+            raise ValueError(
+                "must be one of enum values ('text', 'code', 'render', 'file', 'image', 'search', 'relationMap', 'book', 'noteMap', 'mermaid', 'webView', 'shortcut', 'doc', 'contentWidget', 'launcher')"
+            )
+        return value
+
+    @field_validator("date_last_edited")
+    def date_last_edited_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -142,9 +167,12 @@ class CreateNoteDef(BaseModel):
         if not isinstance(value, str):
             value = str(value)
 
-        if not re.match(r"[a-zA-Z0-9_]{4,32}", value):
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}",
+            value,
+        ):
             raise ValueError(
-                r"must validate the regular expression /[a-zA-Z0-9_]{4,32}/"
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}/"
             )
         return value
 
@@ -166,8 +194,42 @@ class CreateNoteDef(BaseModel):
             )
         return value
 
+    @field_validator("utc_date_last_edited")
+    def utc_date_last_edited_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
+            )
+        return value
+
     @field_validator("utc_date_created")
     def utc_date_created_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
+            )
+        return value
+
+    @field_validator("utc_date_modified")
+    def utc_date_modified_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -200,7 +262,7 @@ class CreateNoteDef(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateNoteDef from a JSON string"""
+        """Create an instance of Revision from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -212,8 +274,15 @@ class CreateNoteDef(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([])
+        excluded_fields: Set[str] = set(
+            [
+                "is_protected",
+                "content_length",
+            ]
+        )
 
         _dict = self.model_dump(
             by_alias=True,
@@ -224,7 +293,7 @@ class CreateNoteDef(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateNoteDef from a dict"""
+        """Create an instance of Revision from a dict"""
         if obj is None:
             return None
 
@@ -233,18 +302,19 @@ class CreateNoteDef(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "parentNoteId": obj.get("parentNoteId"),
-                "title": obj.get("title"),
+                "revisionId": obj.get("revisionId"),
+                "noteId": obj.get("noteId"),
                 "type": obj.get("type"),
                 "mime": obj.get("mime"),
-                "content": obj.get("content"),
-                "notePosition": obj.get("notePosition"),
-                "prefix": obj.get("prefix"),
-                "isExpanded": obj.get("isExpanded"),
-                "noteId": obj.get("noteId"),
-                "branchId": obj.get("branchId"),
+                "isProtected": obj.get("isProtected"),
+                "title": obj.get("title"),
+                "blobId": obj.get("blobId"),
+                "dateLastEdited": obj.get("dateLastEdited"),
                 "dateCreated": obj.get("dateCreated"),
+                "utcDateLastEdited": obj.get("utcDateLastEdited"),
                 "utcDateCreated": obj.get("utcDateCreated"),
+                "utcDateModified": obj.get("utcDateModified"),
+                "contentLength": obj.get("contentLength"),
             }
         )
         return _obj

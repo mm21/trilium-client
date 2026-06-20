@@ -18,15 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import (
-    BaseModel,
-    ConfigDict,
-    Field,
-    StrictBool,
-    StrictInt,
-    StrictStr,
-    field_validator,
-)
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -34,44 +26,62 @@ from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 
-class Attribute(BaseModel):
+class Attachment(BaseModel):
     """
-    Attribute (Label, Relation) is a key-value record attached to a note.
+    Attachment is owned by a note, has title and content
     """  # noqa: E501
 
-    attribute_id: Optional[Annotated[str, Field(strict=True)]] = Field(
+    attachment_id: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None,
-        alias="attributeId",
+        alias="attachmentId",
         json_schema_extra={"examples": ["evnnmvHTCgIn"]},
     )
-    note_id: Optional[Annotated[str, Field(strict=True)]] = Field(
-        default=None, alias="noteId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
+    owner_id: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None, alias="ownerId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
     )
-    type: Optional[StrictStr] = None
-    name: Optional[Annotated[str, Field(strict=True)]] = Field(
-        default=None, json_schema_extra={"examples": ["shareCss"]}
-    )
-    value: Optional[StrictStr] = None
+    role: Optional[StrictStr] = None
+    mime: Optional[StrictStr] = None
+    title: Optional[StrictStr] = None
     position: Optional[StrictInt] = None
-    is_inheritable: Optional[StrictBool] = Field(default=None, alias="isInheritable")
+    blob_id: Optional[StrictStr] = Field(
+        default=None,
+        description="ID of the blob object which effectively serves as a content hash",
+        alias="blobId",
+    )
+    date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="dateModified",
+        json_schema_extra={"examples": ["2021-12-31 20:18:11.930+0100"]},
+    )
     utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None,
         alias="utcDateModified",
         json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
     )
+    utc_date_scheduled_for_erasure_since: Optional[
+        Annotated[str, Field(strict=True)]
+    ] = Field(
+        default=None,
+        alias="utcDateScheduledForErasureSince",
+        json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
+    )
+    content_length: Optional[StrictInt] = Field(default=None, alias="contentLength")
     __properties: ClassVar[List[str]] = [
-        "attributeId",
-        "noteId",
-        "type",
-        "name",
-        "value",
+        "attachmentId",
+        "ownerId",
+        "role",
+        "mime",
+        "title",
         "position",
-        "isInheritable",
+        "blobId",
+        "dateModified",
         "utcDateModified",
+        "utcDateScheduledForErasureSince",
+        "contentLength",
     ]
 
-    @field_validator("attribute_id")
-    def attribute_id_validate_regular_expression(cls, value):
+    @field_validator("attachment_id")
+    def attachment_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -85,8 +95,8 @@ class Attribute(BaseModel):
             )
         return value
 
-    @field_validator("note_id")
-    def note_id_validate_regular_expression(cls, value):
+    @field_validator("owner_id")
+    def owner_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -100,18 +110,8 @@ class Attribute(BaseModel):
             )
         return value
 
-    @field_validator("type")
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["label", "relation"]):
-            raise ValueError("must be one of enum values ('label', 'relation')")
-        return value
-
-    @field_validator("name")
-    def name_validate_regular_expression(cls, value):
+    @field_validator("date_modified")
+    def date_modified_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -119,12 +119,34 @@ class Attribute(BaseModel):
         if not isinstance(value, str):
             value = str(value)
 
-        if not re.match(r"^[^\s]+", value):
-            raise ValueError(r"must validate the regular expression /^[^\s]+/")
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}",
+            value,
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}/"
+            )
         return value
 
     @field_validator("utc_date_modified")
     def utc_date_modified_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
+            )
+        return value
+
+    @field_validator("utc_date_scheduled_for_erasure_since")
+    def utc_date_scheduled_for_erasure_since_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -157,7 +179,7 @@ class Attribute(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Attribute from a JSON string"""
+        """Create an instance of Attachment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -181,7 +203,7 @@ class Attribute(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Attribute from a dict"""
+        """Create an instance of Attachment from a dict"""
         if obj is None:
             return None
 
@@ -190,14 +212,19 @@ class Attribute(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "attributeId": obj.get("attributeId"),
-                "noteId": obj.get("noteId"),
-                "type": obj.get("type"),
-                "name": obj.get("name"),
-                "value": obj.get("value"),
+                "attachmentId": obj.get("attachmentId"),
+                "ownerId": obj.get("ownerId"),
+                "role": obj.get("role"),
+                "mime": obj.get("mime"),
+                "title": obj.get("title"),
                 "position": obj.get("position"),
-                "isInheritable": obj.get("isInheritable"),
+                "blobId": obj.get("blobId"),
+                "dateModified": obj.get("dateModified"),
                 "utcDateModified": obj.get("utcDateModified"),
+                "utcDateScheduledForErasureSince": obj.get(
+                    "utcDateScheduledForErasureSince"
+                ),
+                "contentLength": obj.get("contentLength"),
             }
         )
         return _obj

@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **mime** | **str** | this needs to be specified only for note types &#39;code&#39;, &#39;file&#39;, &#39;image&#39;. | [optional] 
 **content** | **str** |  | 
-**note_position** | **int** | Position of the note in the parent. Normal ordering is 10, 20, 30 ...  So if you want to create a note on the first position, use e.g. 5, for second position 15, for last e.g. 1000000  | [optional] 
-**prefix** | **str** | Prefix is branch (placement) specific title prefix for the note.  Let&#39;s say you have your note placed into two different places in the tree,  but you want to change the title a bit in one of the placements. For this you can use prefix.  | [optional] 
+**note_position** | **int** | Position of the note in the parent. Normal ordering is 10, 20, 30 ... So if you want to create a note on the first position, use e.g. 5, for second position 15, for last e.g. 1000000  | [optional] 
+**prefix** | **str** | Prefix is branch (placement) specific title prefix for the note. Let&#39;s say you have your note placed into two different places in the tree, but you want to change the title a bit in one of the placements. For this you can use prefix.  | [optional] 
 **is_expanded** | **bool** | true if this note (as a folder) should appear expanded | [optional] 
 **note_id** | **str** |  | [optional] 
 **branch_id** | **str** |  | [optional] 
+**date_created** | **str** |  | [optional] 
+**utc_date_created** | **str** |  | [optional] 
 
 ## Example
 

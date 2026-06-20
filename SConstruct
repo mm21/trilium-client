@@ -39,7 +39,7 @@ def get_dependencies(path_requirements: str) -> list[tuple[str, str]]:
 
 
 # adjust dependencies in place
-def tune_dependencies(deps: list[str]):
+def tune_dependencies(deps: list[tuple[str, str]]):
     """
     No longer needed as openapi-generator-cli now supports Pydantic2,
     but kept in case a similar hack is needed.
@@ -108,6 +108,7 @@ def build_readme(target, source, env):
 
 
 def install(target, source, env):
+    print(f'--- copying: {source[0]} -> {target[0]}')
     if os.path.isfile(str(source[0])):
         shutil.copyfile(str(source[0]), str(target[0]))
     else:

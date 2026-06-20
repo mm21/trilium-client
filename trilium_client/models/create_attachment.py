@@ -18,23 +18,50 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 
-class LoginRequest(BaseModel):
+class CreateAttachment(BaseModel):
     """
-    LoginRequest
+    CreateAttachment
     """  # noqa: E501
 
-    password: Optional[StrictStr] = Field(
-        default=None,
-        description="user's password used to e.g. login to Trilium server and/or protect notes",
+    owner_id: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None, alias="ownerId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
     )
-    __properties: ClassVar[List[str]] = ["password"]
+    role: Optional[StrictStr] = None
+    mime: Optional[StrictStr] = None
+    title: Optional[StrictStr] = None
+    content: Optional[StrictStr] = None
+    position: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = [
+        "ownerId",
+        "role",
+        "mime",
+        "title",
+        "content",
+        "position",
+    ]
+
+    @field_validator("owner_id")
+    def owner_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"[a-zA-Z0-9_]{4,32}", value):
+            raise ValueError(
+                r"must validate the regular expression /[a-zA-Z0-9_]{4,32}/"
+            )
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -53,7 +80,7 @@ class LoginRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LoginRequest from a JSON string"""
+        """Create an instance of CreateAttachment from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,12 +104,21 @@ class LoginRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LoginRequest from a dict"""
+        """Create an instance of CreateAttachment from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"password": obj.get("password")})
+        _obj = cls.model_validate(
+            {
+                "ownerId": obj.get("ownerId"),
+                "role": obj.get("role"),
+                "mime": obj.get("mime"),
+                "title": obj.get("title"),
+                "content": obj.get("content"),
+                "position": obj.get("position"),
+            }
+        )
         return _obj

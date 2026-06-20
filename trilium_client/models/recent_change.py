@@ -23,7 +23,6 @@ from pydantic import (
     ConfigDict,
     Field,
     StrictBool,
-    StrictInt,
     StrictStr,
     field_validator,
 )
@@ -34,56 +33,63 @@ from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 
-class Attribute(BaseModel):
+class RecentChange(BaseModel):
     """
-    Attribute (Label, Relation) is a key-value record attached to a note.
+    Represents a recent change event (creation, modification, or deletion).
     """  # noqa: E501
 
-    attribute_id: Optional[Annotated[str, Field(strict=True)]] = Field(
-        default=None,
-        alias="attributeId",
-        json_schema_extra={"examples": ["evnnmvHTCgIn"]},
-    )
     note_id: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="noteId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
     )
-    type: Optional[StrictStr] = None
-    name: Optional[Annotated[str, Field(strict=True)]] = Field(
-        default=None, json_schema_extra={"examples": ["shareCss"]}
-    )
-    value: Optional[StrictStr] = None
-    position: Optional[StrictInt] = None
-    is_inheritable: Optional[StrictBool] = Field(default=None, alias="isInheritable")
-    utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
+    title: Optional[StrictStr] = Field(
         default=None,
-        alias="utcDateModified",
+        description='Title at the time of the change (may be "[protected]" for protected notes)',
+    )
+    current_title: Optional[StrictStr] = Field(
+        default=None,
+        description='Current title of the note (may be "[protected]" for protected notes)',
+    )
+    current_is_deleted: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the note is currently deleted",
+        alias="current_isDeleted",
+    )
+    current_delete_id: Optional[StrictStr] = Field(
+        default=None,
+        description="Delete ID if the note is deleted",
+        alias="current_deleteId",
+    )
+    current_is_protected: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the note is protected",
+        alias="current_isProtected",
+    )
+    utc_date: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="utcDate",
         json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
     )
+    var_date: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="date",
+        json_schema_extra={"examples": ["2021-12-31 20:18:11.930+0100"]},
+    )
+    can_be_undeleted: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the note can be undeleted (only present for deleted notes)",
+        alias="canBeUndeleted",
+    )
     __properties: ClassVar[List[str]] = [
-        "attributeId",
         "noteId",
-        "type",
-        "name",
-        "value",
-        "position",
-        "isInheritable",
-        "utcDateModified",
+        "title",
+        "current_title",
+        "current_isDeleted",
+        "current_deleteId",
+        "current_isProtected",
+        "utcDate",
+        "date",
+        "canBeUndeleted",
     ]
-
-    @field_validator("attribute_id")
-    def attribute_id_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"[a-zA-Z0-9_]{4,32}", value):
-            raise ValueError(
-                r"must validate the regular expression /[a-zA-Z0-9_]{4,32}/"
-            )
-        return value
 
     @field_validator("note_id")
     def note_id_validate_regular_expression(cls, value):
@@ -100,31 +106,8 @@ class Attribute(BaseModel):
             )
         return value
 
-    @field_validator("type")
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["label", "relation"]):
-            raise ValueError("must be one of enum values ('label', 'relation')")
-        return value
-
-    @field_validator("name")
-    def name_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not isinstance(value, str):
-            value = str(value)
-
-        if not re.match(r"^[^\s]+", value):
-            raise ValueError(r"must validate the regular expression /^[^\s]+/")
-        return value
-
-    @field_validator("utc_date_modified")
-    def utc_date_modified_validate_regular_expression(cls, value):
+    @field_validator("utc_date")
+    def utc_date_validate_regular_expression(cls, value):
         """Validates the regular expression"""
         if value is None:
             return value
@@ -137,6 +120,24 @@ class Attribute(BaseModel):
         ):
             raise ValueError(
                 r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
+            )
+        return value
+
+    @field_validator("var_date")
+    def var_date_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}",
+            value,
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}[\+\-][0-9]{4}/"
             )
         return value
 
@@ -157,7 +158,7 @@ class Attribute(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Attribute from a JSON string"""
+        """Create an instance of RecentChange from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -181,7 +182,7 @@ class Attribute(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Attribute from a dict"""
+        """Create an instance of RecentChange from a dict"""
         if obj is None:
             return None
 
@@ -190,14 +191,15 @@ class Attribute(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "attributeId": obj.get("attributeId"),
                 "noteId": obj.get("noteId"),
-                "type": obj.get("type"),
-                "name": obj.get("name"),
-                "value": obj.get("value"),
-                "position": obj.get("position"),
-                "isInheritable": obj.get("isInheritable"),
-                "utcDateModified": obj.get("utcDateModified"),
+                "title": obj.get("title"),
+                "current_title": obj.get("current_title"),
+                "current_isDeleted": obj.get("current_isDeleted"),
+                "current_deleteId": obj.get("current_deleteId"),
+                "current_isProtected": obj.get("current_isProtected"),
+                "utcDate": obj.get("utcDate"),
+                "date": obj.get("date"),
+                "canBeUndeleted": obj.get("canBeUndeleted"),
             }
         )
         return _obj

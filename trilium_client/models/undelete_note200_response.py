@@ -18,23 +18,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
 
-class LoginRequest(BaseModel):
+class UndeleteNote200Response(BaseModel):
     """
-    LoginRequest
+    UndeleteNote200Response
     """  # noqa: E501
 
-    password: Optional[StrictStr] = Field(
-        default=None,
-        description="user's password used to e.g. login to Trilium server and/or protect notes",
+    success: Optional[StrictBool] = Field(
+        default=None, json_schema_extra={"examples": [True]}
     )
-    __properties: ClassVar[List[str]] = ["password"]
+    __properties: ClassVar[List[str]] = ["success"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -53,7 +52,7 @@ class LoginRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of LoginRequest from a JSON string"""
+        """Create an instance of UndeleteNote200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,12 +76,12 @@ class LoginRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of LoginRequest from a dict"""
+        """Create an instance of UndeleteNote200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"password": obj.get("password")})
+        _obj = cls.model_validate({"success": obj.get("success")})
         return _obj
