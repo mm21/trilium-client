@@ -34,7 +34,17 @@ class LoginRequest(BaseModel):
         default=None,
         description="user's password used to e.g. login to Trilium server and/or protect notes",
     )
-    __properties: ClassVar[List[str]] = ["password"]
+    totp_token: Optional[StrictStr] = Field(
+        default=None,
+        description="the current TOTP code, or one of the recovery codes; required when multi-factor authentication with TOTP is enabled. Each code is accepted once.",
+        alias="totpToken",
+    )
+    token_name: Optional[StrictStr] = Field(
+        default=None,
+        description="name of the created token, shown in the list of ETAPI tokens",
+        alias="tokenName",
+    )
+    __properties: ClassVar[List[str]] = ["password", "totpToken", "tokenName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,5 +94,11 @@ class LoginRequest(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"password": obj.get("password")})
+        _obj = cls.model_validate(
+            {
+                "password": obj.get("password"),
+                "totpToken": obj.get("totpToken"),
+                "tokenName": obj.get("tokenName"),
+            }
+        )
         return _obj

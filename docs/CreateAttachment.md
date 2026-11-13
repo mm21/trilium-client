@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **role** | **str** |  | [optional] 
 **mime** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
-**content** | **str** |  | [optional] 
+**content** | **str** | Text content of the attachment, stored as-is. To store binary content, create the attachment without it, then upload the data with &#x60;PUT /attachments/{attachmentId}/content&#x60;.  | [optional] 
 **position** | **int** |  | [optional] 
 
 ## Example

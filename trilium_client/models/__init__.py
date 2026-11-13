@@ -23,6 +23,10 @@ from trilium_client.models.create_note_def import CreateNoteDef
 from trilium_client.models.error import Error
 from trilium_client.models.login201_response import Login201Response
 from trilium_client.models.login_request import LoginRequest
+from trilium_client.models.metrics import Metrics
+from trilium_client.models.metrics_database import MetricsDatabase
+from trilium_client.models.metrics_statistics import MetricsStatistics
+from trilium_client.models.metrics_version import MetricsVersion
 from trilium_client.models.note import Note
 from trilium_client.models.note_with_branch import NoteWithBranch
 from trilium_client.models.recent_change import RecentChange

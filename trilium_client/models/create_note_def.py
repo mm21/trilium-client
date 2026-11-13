@@ -80,6 +80,11 @@ class CreateNoteDef(BaseModel):
         alias="utcDateCreated",
         json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
     )
+    utc_date_modified: Optional[Annotated[str, Field(strict=True)]] = Field(
+        default=None,
+        alias="utcDateModified",
+        json_schema_extra={"examples": ["2021-12-31 19:18:11.930Z"]},
+    )
     __properties: ClassVar[List[str]] = [
         "parentNoteId",
         "title",
@@ -93,6 +98,7 @@ class CreateNoteDef(BaseModel):
         "branchId",
         "dateCreated",
         "utcDateCreated",
+        "utcDateModified",
     ]
 
     @field_validator("parent_note_id")
@@ -183,6 +189,23 @@ class CreateNoteDef(BaseModel):
             )
         return value
 
+    @field_validator("utc_date_modified")
+    def utc_date_modified_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(
+            r"[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z", value
+        ):
+            raise ValueError(
+                r"must validate the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{3}Z/"
+            )
+        return value
+
     model_config = ConfigDict(
         validate_by_name=True,
         validate_by_alias=True,
@@ -245,6 +268,7 @@ class CreateNoteDef(BaseModel):
                 "branchId": obj.get("branchId"),
                 "dateCreated": obj.get("dateCreated"),
                 "utcDateCreated": obj.get("utcDateCreated"),
+                "utcDateModified": obj.get("utcDateModified"),
             }
         )
         return _obj

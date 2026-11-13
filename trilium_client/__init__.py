@@ -19,7 +19,14 @@ __version__ = "1.0.0"
 
 # Define package exports
 __all__ = [
-    "DefaultApi",
+    "ApplicationApi",
+    "AttachmentsApi",
+    "AttributesApi",
+    "BranchesApi",
+    "CalendarApi",
+    "NotesApi",
+    "RevisionsApi",
+    "TokensApi",
     "ApiResponse",
     "ApiClient",
     "Configuration",
@@ -38,6 +45,10 @@ __all__ = [
     "Error",
     "Login201Response",
     "LoginRequest",
+    "Metrics",
+    "MetricsDatabase",
+    "MetricsStatistics",
+    "MetricsVersion",
     "Note",
     "NoteWithBranch",
     "RecentChange",
@@ -47,7 +58,14 @@ __all__ = [
 ]
 
 # import apis into sdk package
-from trilium_client.api.default_api import DefaultApi as DefaultApi
+from trilium_client.api.application_api import ApplicationApi as ApplicationApi
+from trilium_client.api.attachments_api import AttachmentsApi as AttachmentsApi
+from trilium_client.api.attributes_api import AttributesApi as AttributesApi
+from trilium_client.api.branches_api import BranchesApi as BranchesApi
+from trilium_client.api.calendar_api import CalendarApi as CalendarApi
+from trilium_client.api.notes_api import NotesApi as NotesApi
+from trilium_client.api.revisions_api import RevisionsApi as RevisionsApi
+from trilium_client.api.tokens_api import TokensApi as TokensApi
 
 # import ApiClient
 from trilium_client.api_response import ApiResponse as ApiResponse
@@ -70,6 +88,12 @@ from trilium_client.models.create_note_def import CreateNoteDef as CreateNoteDef
 from trilium_client.models.error import Error as Error
 from trilium_client.models.login201_response import Login201Response as Login201Response
 from trilium_client.models.login_request import LoginRequest as LoginRequest
+from trilium_client.models.metrics import Metrics as Metrics
+from trilium_client.models.metrics_database import MetricsDatabase as MetricsDatabase
+from trilium_client.models.metrics_statistics import (
+    MetricsStatistics as MetricsStatistics,
+)
+from trilium_client.models.metrics_version import MetricsVersion as MetricsVersion
 from trilium_client.models.note import Note as Note
 from trilium_client.models.note_with_branch import NoteWithBranch as NoteWithBranch
 from trilium_client.models.recent_change import RecentChange as RecentChange

@@ -41,7 +41,10 @@ class Attachment(BaseModel):
     )
     role: Optional[StrictStr] = None
     mime: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
+    title: Optional[StrictStr] = Field(
+        default=None,
+        description='Title of the attachment. Returned as "[protected]" for protected attachments, since ETAPI cannot open a protected session. ',
+    )
     position: Optional[StrictInt] = None
     blob_id: Optional[StrictStr] = Field(
         default=None,

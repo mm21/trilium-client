@@ -116,13 +116,14 @@ configuration = trilium_client.Configuration(
 # Enter a context with an instance of the API client
 with trilium_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = trilium_client.DefaultApi(api_client)
+    api_instance = trilium_client.ApplicationApi(api_client)
     backup_name = 'backup_name_example' # str | If the backupName is e.g. \"now\", then the backup will be written to \"backup-now.db\" file
 
     try:
+        # Create a backup
         api_instance.create_backup(backup_name)
     except ApiException as e:
-        print("Exception when calling DefaultApi->create_backup: %s\n" % e)
+        print("Exception when calling ApplicationApi->create_backup: %s\n" % e)
 
 ```
 
@@ -132,46 +133,48 @@ All URIs are relative to *http://localhost:37740/etapi*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**create_backup**](docs/DefaultApi.md#create_backup) | **PUT** /backup/{backupName} | 
-*DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /create-note | 
-*DefaultApi* | [**create_revision**](docs/DefaultApi.md#create_revision) | **POST** /notes/{noteId}/revision | 
-*DefaultApi* | [**delete_attachment_by_id**](docs/DefaultApi.md#delete_attachment_by_id) | **DELETE** /attachments/{attachmentId} | 
-*DefaultApi* | [**delete_attribute_by_id**](docs/DefaultApi.md#delete_attribute_by_id) | **DELETE** /attributes/{attributeId} | 
-*DefaultApi* | [**delete_branch_by_id**](docs/DefaultApi.md#delete_branch_by_id) | **DELETE** /branches/{branchId} | 
-*DefaultApi* | [**delete_note_by_id**](docs/DefaultApi.md#delete_note_by_id) | **DELETE** /notes/{noteId} | 
-*DefaultApi* | [**export_note_subtree**](docs/DefaultApi.md#export_note_subtree) | **GET** /notes/{noteId}/export | 
-*DefaultApi* | [**get_app_info**](docs/DefaultApi.md#get_app_info) | **GET** /app-info | 
-*DefaultApi* | [**get_attachment_by_id**](docs/DefaultApi.md#get_attachment_by_id) | **GET** /attachments/{attachmentId} | 
-*DefaultApi* | [**get_attachment_content**](docs/DefaultApi.md#get_attachment_content) | **GET** /attachments/{attachmentId}/content | 
-*DefaultApi* | [**get_attribute_by_id**](docs/DefaultApi.md#get_attribute_by_id) | **GET** /attributes/{attributeId} | 
-*DefaultApi* | [**get_branch_by_id**](docs/DefaultApi.md#get_branch_by_id) | **GET** /branches/{branchId} | 
-*DefaultApi* | [**get_day_note**](docs/DefaultApi.md#get_day_note) | **GET** /calendar/days/{date} | 
-*DefaultApi* | [**get_inbox_note**](docs/DefaultApi.md#get_inbox_note) | **GET** /inbox/{date} | 
-*DefaultApi* | [**get_month_note**](docs/DefaultApi.md#get_month_note) | **GET** /calendar/months/{month} | Get a month note
-*DefaultApi* | [**get_note_attachments**](docs/DefaultApi.md#get_note_attachments) | **GET** /notes/{noteId}/attachments | 
-*DefaultApi* | [**get_note_by_id**](docs/DefaultApi.md#get_note_by_id) | **GET** /notes/{noteId} | 
-*DefaultApi* | [**get_note_content**](docs/DefaultApi.md#get_note_content) | **GET** /notes/{noteId}/content | 
-*DefaultApi* | [**get_note_history**](docs/DefaultApi.md#get_note_history) | **GET** /notes/history | 
-*DefaultApi* | [**get_note_revisions**](docs/DefaultApi.md#get_note_revisions) | **GET** /notes/{noteId}/revisions | 
-*DefaultApi* | [**get_revision_by_id**](docs/DefaultApi.md#get_revision_by_id) | **GET** /revisions/{revisionId} | 
-*DefaultApi* | [**get_revision_content**](docs/DefaultApi.md#get_revision_content) | **GET** /revisions/{revisionId}/content | 
-*DefaultApi* | [**get_week_note**](docs/DefaultApi.md#get_week_note) | **GET** /calendar/weeks/{week} | Get a week note
-*DefaultApi* | [**get_year_note**](docs/DefaultApi.md#get_year_note) | **GET** /calendar/years/{year} | Get a year note
-*DefaultApi* | [**import_zip**](docs/DefaultApi.md#import_zip) | **POST** /notes/{noteId}/import | 
-*DefaultApi* | [**login**](docs/DefaultApi.md#login) | **POST** /auth/login | 
-*DefaultApi* | [**logout**](docs/DefaultApi.md#logout) | **POST** /auth/logout | 
-*DefaultApi* | [**patch_attachment_by_id**](docs/DefaultApi.md#patch_attachment_by_id) | **PATCH** /attachments/{attachmentId} | 
-*DefaultApi* | [**patch_attribute_by_id**](docs/DefaultApi.md#patch_attribute_by_id) | **PATCH** /attributes/{attributeId} | 
-*DefaultApi* | [**patch_branch_by_id**](docs/DefaultApi.md#patch_branch_by_id) | **PATCH** /branches/{branchId} | 
-*DefaultApi* | [**patch_note_by_id**](docs/DefaultApi.md#patch_note_by_id) | **PATCH** /notes/{noteId} | 
-*DefaultApi* | [**post_attachment**](docs/DefaultApi.md#post_attachment) | **POST** /attachments | 
-*DefaultApi* | [**post_attribute**](docs/DefaultApi.md#post_attribute) | **POST** /attributes | 
-*DefaultApi* | [**post_branch**](docs/DefaultApi.md#post_branch) | **POST** /branches | 
-*DefaultApi* | [**post_refresh_note_ordering**](docs/DefaultApi.md#post_refresh_note_ordering) | **POST** /refresh-note-ordering/{parentNoteId} | 
-*DefaultApi* | [**put_attachment_content_by_id**](docs/DefaultApi.md#put_attachment_content_by_id) | **PUT** /attachments/{attachmentId}/content | 
-*DefaultApi* | [**put_note_content_by_id**](docs/DefaultApi.md#put_note_content_by_id) | **PUT** /notes/{noteId}/content | 
-*DefaultApi* | [**search_notes**](docs/DefaultApi.md#search_notes) | **GET** /notes | 
-*DefaultApi* | [**undelete_note**](docs/DefaultApi.md#undelete_note) | **POST** /notes/{noteId}/undelete | 
+*ApplicationApi* | [**create_backup**](docs/ApplicationApi.md#create_backup) | **PUT** /backup/{backupName} | Create a backup
+*ApplicationApi* | [**get_app_info**](docs/ApplicationApi.md#get_app_info) | **GET** /app-info | Get application info
+*ApplicationApi* | [**get_metrics**](docs/ApplicationApi.md#get_metrics) | **GET** /metrics | Get instance metrics
+*AttachmentsApi* | [**delete_attachment_by_id**](docs/AttachmentsApi.md#delete_attachment_by_id) | **DELETE** /attachments/{attachmentId} | Delete an attachment
+*AttachmentsApi* | [**get_attachment_by_id**](docs/AttachmentsApi.md#get_attachment_by_id) | **GET** /attachments/{attachmentId} | Get an attachment
+*AttachmentsApi* | [**get_attachment_content**](docs/AttachmentsApi.md#get_attachment_content) | **GET** /attachments/{attachmentId}/content | Get the content of an attachment
+*AttachmentsApi* | [**get_note_attachments**](docs/AttachmentsApi.md#get_note_attachments) | **GET** /notes/{noteId}/attachments | List the attachments of a note
+*AttachmentsApi* | [**patch_attachment_by_id**](docs/AttachmentsApi.md#patch_attachment_by_id) | **PATCH** /attachments/{attachmentId} | Update an attachment
+*AttachmentsApi* | [**post_attachment**](docs/AttachmentsApi.md#post_attachment) | **POST** /attachments | Create an attachment
+*AttachmentsApi* | [**put_attachment_content_by_id**](docs/AttachmentsApi.md#put_attachment_content_by_id) | **PUT** /attachments/{attachmentId}/content | Replace the content of an attachment
+*AttributesApi* | [**delete_attribute_by_id**](docs/AttributesApi.md#delete_attribute_by_id) | **DELETE** /attributes/{attributeId} | Delete an attribute
+*AttributesApi* | [**get_attribute_by_id**](docs/AttributesApi.md#get_attribute_by_id) | **GET** /attributes/{attributeId} | Get an attribute
+*AttributesApi* | [**patch_attribute_by_id**](docs/AttributesApi.md#patch_attribute_by_id) | **PATCH** /attributes/{attributeId} | Update an attribute
+*AttributesApi* | [**post_attribute**](docs/AttributesApi.md#post_attribute) | **POST** /attributes | Create an attribute
+*BranchesApi* | [**delete_branch_by_id**](docs/BranchesApi.md#delete_branch_by_id) | **DELETE** /branches/{branchId} | Delete a branch
+*BranchesApi* | [**get_branch_by_id**](docs/BranchesApi.md#get_branch_by_id) | **GET** /branches/{branchId} | Get a branch
+*BranchesApi* | [**patch_branch_by_id**](docs/BranchesApi.md#patch_branch_by_id) | **PATCH** /branches/{branchId} | Update a branch
+*BranchesApi* | [**post_branch**](docs/BranchesApi.md#post_branch) | **POST** /branches | Create a branch
+*BranchesApi* | [**post_refresh_note_ordering**](docs/BranchesApi.md#post_refresh_note_ordering) | **POST** /refresh-note-ordering/{parentNoteId} | Refresh the order of child notes
+*CalendarApi* | [**get_day_note**](docs/CalendarApi.md#get_day_note) | **GET** /calendar/days/{date} | Get a day note
+*CalendarApi* | [**get_inbox_note**](docs/CalendarApi.md#get_inbox_note) | **GET** /inbox/{date} | Get the inbox note
+*CalendarApi* | [**get_month_note**](docs/CalendarApi.md#get_month_note) | **GET** /calendar/months/{month} | Get a month note
+*CalendarApi* | [**get_week_first_day_note**](docs/CalendarApi.md#get_week_first_day_note) | **GET** /calendar/week-first-day/{date} | Get the day note starting the week
+*CalendarApi* | [**get_week_note**](docs/CalendarApi.md#get_week_note) | **GET** /calendar/weeks/{week} | Get a week note
+*CalendarApi* | [**get_year_note**](docs/CalendarApi.md#get_year_note) | **GET** /calendar/years/{year} | Get a year note
+*NotesApi* | [**create_note**](docs/NotesApi.md#create_note) | **POST** /create-note | Create a note
+*NotesApi* | [**delete_note_by_id**](docs/NotesApi.md#delete_note_by_id) | **DELETE** /notes/{noteId} | Delete a note
+*NotesApi* | [**export_note_subtree**](docs/NotesApi.md#export_note_subtree) | **GET** /notes/{noteId}/export | Export a subtree
+*NotesApi* | [**get_note_by_id**](docs/NotesApi.md#get_note_by_id) | **GET** /notes/{noteId} | Get a note
+*NotesApi* | [**get_note_content**](docs/NotesApi.md#get_note_content) | **GET** /notes/{noteId}/content | Get the content of a note
+*NotesApi* | [**get_note_history**](docs/NotesApi.md#get_note_history) | **GET** /notes/history | List recent changes
+*NotesApi* | [**import_zip**](docs/NotesApi.md#import_zip) | **POST** /notes/{noteId}/import | Import a ZIP archive
+*NotesApi* | [**patch_note_by_id**](docs/NotesApi.md#patch_note_by_id) | **PATCH** /notes/{noteId} | Update a note
+*NotesApi* | [**put_note_content_by_id**](docs/NotesApi.md#put_note_content_by_id) | **PUT** /notes/{noteId}/content | Replace the content of a note
+*NotesApi* | [**search_notes**](docs/NotesApi.md#search_notes) | **GET** /notes | Search notes
+*NotesApi* | [**undelete_note**](docs/NotesApi.md#undelete_note) | **POST** /notes/{noteId}/undelete | Restore a deleted note
+*RevisionsApi* | [**create_revision**](docs/RevisionsApi.md#create_revision) | **POST** /notes/{noteId}/revision | Create a revision
+*RevisionsApi* | [**get_note_revisions**](docs/RevisionsApi.md#get_note_revisions) | **GET** /notes/{noteId}/revisions | List the revisions of a note
+*RevisionsApi* | [**get_revision_by_id**](docs/RevisionsApi.md#get_revision_by_id) | **GET** /revisions/{revisionId} | Get a revision
+*RevisionsApi* | [**get_revision_content**](docs/RevisionsApi.md#get_revision_content) | **GET** /revisions/{revisionId}/content | Get the content of a revision
+*TokensApi* | [**login**](docs/TokensApi.md#login) | **POST** /auth/login | Log in
+*TokensApi* | [**logout**](docs/TokensApi.md#logout) | **POST** /auth/logout | Log out
 
 
 ## Documentation For Models
@@ -185,6 +188,10 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [Login201Response](docs/Login201Response.md)
  - [LoginRequest](docs/LoginRequest.md)
+ - [Metrics](docs/Metrics.md)
+ - [MetricsDatabase](docs/MetricsDatabase.md)
+ - [MetricsStatistics](docs/MetricsStatistics.md)
+ - [MetricsVersion](docs/MetricsVersion.md)
  - [Note](docs/Note.md)
  - [NoteWithBranch](docs/NoteWithBranch.md)
  - [RecentChange](docs/RecentChange.md)

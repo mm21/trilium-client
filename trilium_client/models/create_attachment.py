@@ -37,7 +37,10 @@ class CreateAttachment(BaseModel):
     role: Optional[StrictStr] = None
     mime: Optional[StrictStr] = None
     title: Optional[StrictStr] = None
-    content: Optional[StrictStr] = None
+    content: Optional[StrictStr] = Field(
+        default=None,
+        description="Text content of the attachment, stored as-is. To store binary content, create the attachment without it, then upload the data with `PUT /attachments/{attachmentId}/content`. ",
+    )
     position: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
         "ownerId",

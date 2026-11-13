@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **owner_id** | **str** |  | [optional] 
 **role** | **str** |  | [optional] 
 **mime** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
+**title** | **str** | Title of the attachment. Returned as \&quot;[protected]\&quot; for protected attachments, since ETAPI cannot open a protected session.  | [optional] 
 **position** | **int** |  | [optional] 
 **blob_id** | **str** | ID of the blob object which effectively serves as a content hash | [optional] 
 **date_modified** | **str** |  | [optional] 

@@ -71,7 +71,7 @@ class AppInfo(BaseModel):
         default=None,
         description="version of the supported Trilium Web Clipper protocol",
         alias="clipperProtocolVersion",
-        json_schema_extra={"examples": ["1.0"]},
+        json_schema_extra={"examples": ["1.1"]},
     )
     utc_date_time: Optional[StrictStr] = Field(
         default=None,

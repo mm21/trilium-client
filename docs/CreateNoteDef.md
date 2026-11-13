@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **branch_id** | **str** |  | [optional] 
 **date_created** | **str** |  | [optional] 
 **utc_date_created** | **str** |  | [optional] 
+**utc_date_modified** | **str** |  | [optional] 
 
 ## Example
 

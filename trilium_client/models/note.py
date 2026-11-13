@@ -42,7 +42,10 @@ class Note(BaseModel):
     note_id: Optional[Annotated[str, Field(strict=True)]] = Field(
         default=None, alias="noteId", json_schema_extra={"examples": ["evnnmvHTCgIn"]}
     )
-    title: Optional[StrictStr] = None
+    title: Optional[StrictStr] = Field(
+        default=None,
+        description='Title of the note. Returned as "[protected]" for protected notes, since ETAPI cannot open a protected session. ',
+    )
     type: Optional[StrictStr] = None
     mime: Optional[StrictStr] = None
     is_protected: Optional[StrictBool] = Field(default=None, alias="isProtected")

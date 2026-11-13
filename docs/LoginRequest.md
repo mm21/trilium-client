@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **password** | **str** | user&#39;s password used to e.g. login to Trilium server and/or protect notes | [optional] 
+**totp_token** | **str** | the current TOTP code, or one of the recovery codes; required when multi-factor authentication with TOTP is enabled. Each code is accepted once. | [optional] 
+**token_name** | **str** | name of the created token, shown in the list of ETAPI tokens | [optional] 
 
 ## Example
 

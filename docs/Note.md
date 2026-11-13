@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **note_id** | **str** |  | [optional] 
-**title** | **str** |  | [optional] 
+**title** | **str** | Title of the note. Returned as \&quot;[protected]\&quot; for protected notes, since ETAPI cannot open a protected session.  | [optional] 
 **type** | **str** |  | [optional] 
 **mime** | **str** |  | [optional] 
 **is_protected** | **bool** |  | [optional] [readonly] 
